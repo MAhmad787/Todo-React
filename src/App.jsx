@@ -17,8 +17,8 @@ const App = () => {
     });
     console.log(items);
   };
-  const deleteItem = () => {
-    console.log('Deleted');
+  const deleteItem = (id) => {
+    setItems(items.filter((item) => item.id !== id));
   };
   const toggleItem = (id, completed) => {
     setItems((currentItems) => {
@@ -57,7 +57,10 @@ const App = () => {
               />
               {item.title}
             </label>
-            <button onClick={deleteItem} className="btn btn-danger">
+            <button
+              onClick={() => deleteItem(item.id)}
+              className="btn btn-danger"
+            >
               Delete
             </button>
           </li>
